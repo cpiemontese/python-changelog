@@ -22,7 +22,7 @@ def get_changelog_of_latest_tag(path):
 	changelog = ""
 	changelog_started = False
 
-	for line in read_file(path)	:
+	for line in read_file(path):
 		if line == None:
 			skip
 		
@@ -37,6 +37,9 @@ def get_changelog_of_latest_tag(path):
 			changelog_started = True
 			latest_tag = tag[0][1:-1] if latest_tag == None else latest_tag
 		elif changelog_started:
-			changelog += re.sub('^###', '#', line)
+			changelog += replace_h3_with_h1(line)
 
 	return latest_tag, changelog.strip('\n')
+
+def replace_h3_with_h1(line):
+    re.sub('^###', '#', line)
