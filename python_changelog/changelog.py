@@ -17,17 +17,6 @@ def read_file(path):
 		for line in changelog_file.readlines():
 			yield line
 
-def find_latest_tag(path):
-	for line in read_file(path)	:
-		if line == None:
-			skip
-		
-		tag = re.search(tag_regex, line)
-		if tag:
-			return tag[0][1:-1]
-
-	return None
-
 def get_changelog_of_latest_tag(path):
 	latest_tag = None
 	changelog = ""
@@ -50,4 +39,4 @@ def get_changelog_of_latest_tag(path):
 		elif changelog_started:
 			changelog += line
 
-	return latest_tag, changelog
+	return latest_tag, changelog.strip('\n')
