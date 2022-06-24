@@ -1,5 +1,6 @@
 from pathlib import Path
 import re
+from unittest import skip
 
 
 def read_changelog(path):
@@ -16,15 +17,13 @@ def read_changelog(path):
 			yield line
 
 def find_latest_tag(path="CHANGELOG.md"):
-	found = False
 	for line in read_changelog(path):
 		if line == None:
-			return None
+			skip
 		
 		tag = re.search("\[[0-9]+\.[0-9]+.[0-9]+\]", line)
 		if tag:
-			found = True
 			return tag[0][1:-1]
 
-	if not found:
-		print("Could not find latest tag")
+	print("Could not find latest tag")
+	return None
