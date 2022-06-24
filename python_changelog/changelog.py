@@ -3,9 +3,9 @@ import re
 from unittest import skip
 
 
-def read_changelog(path):
+def read_file(path):
 	"""
-	Test doc
+	Read a file from a path and return lines as a generator
 	"""
 	changelog_path = Path(path)
 	if not changelog_path.exists():
@@ -17,7 +17,7 @@ def read_changelog(path):
 			yield line
 
 def find_latest_tag(path="CHANGELOG.md"):
-	for line in read_changelog(path):
+	for line in read_file(path):
 		if line == None:
 			skip
 		
