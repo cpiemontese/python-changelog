@@ -39,7 +39,10 @@ def get_changelog_of_latest_tag(path):
 		
 		tag = re.search(tag_regex, line)
 
-		if tag and changelog_started:
+		a_new_tag = tag and changelog_started
+		link_section_starting = line.startswith('[')
+	
+		if a_new_tag or link_section_starting:
 			break
 		elif tag:
 			changelog_started = True
