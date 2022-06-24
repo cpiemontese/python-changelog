@@ -8,7 +8,7 @@ version = "0.1.0"
 python = "^3.10"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^7.1.2"
 
 [tool.poetry.scripts]
 main = "python_changelog:main"

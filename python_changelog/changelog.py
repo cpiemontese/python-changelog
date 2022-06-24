@@ -21,7 +21,7 @@ def find_latest_tag(path="CHANGELOG.md"):
 		if line == None:
 			skip
 		
-		tag = re.search("\[[0-9]+\.[0-9]+.[0-9]+\]", line)
+		tag = re.search(r"\[[0-9]+\.[0-9]+.[0-9]+\]", line)
 		if tag:
 			return tag[0][1:-1]
 
