@@ -37,6 +37,6 @@ def get_changelog_of_latest_tag(path):
 			changelog_started = True
 			latest_tag = tag[0][1:-1] if latest_tag == None else latest_tag
 		elif changelog_started:
-			changelog += line
+			changelog += re.sub('^###', '#', line)
 
 	return latest_tag, changelog.strip('\n')
