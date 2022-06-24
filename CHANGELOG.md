@@ -1,1 +1,25 @@
+## [Unreleased]
+
 ## [1.0.0] - 2022-01-02
+
+### Added
+
+- Mario
+
+### Changed
+
+- Ugo
+
+### Fixed
+
+- Pluto
+
+### Removed
+
+- Pippo
+
+## [0.9.123] - 2022-01-01
+
+### Added
+
+- Pippo

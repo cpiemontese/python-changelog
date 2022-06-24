@@ -2,6 +2,7 @@ from pathlib import Path
 import re
 from unittest import skip
 
+tag_regex = re.compile(r"\[[0-9]+\.[0-9]+.[0-9]+\]")
 
 def read_file(path):
 	"""
@@ -16,14 +17,34 @@ def read_file(path):
 		for line in changelog_file.readlines():
 			yield line
 
-def find_latest_tag(path="CHANGELOG.md"):
-	for line in read_file(path):
+def find_latest_tag(path):
+	for line in read_file(path)	:
 		if line == None:
 			skip
 		
-		tag = re.search(r"\[[0-9]+\.[0-9]+.[0-9]+\]", line)
+		tag = re.search(tag_regex, line)
 		if tag:
 			return tag[0][1:-1]
 
-	print("Could not find latest tag")
 	return None
+
+def get_changelog_of_latest_tag(path):
+	latest_tag = None
+	changelog = ""
+	changelog_started = False
+
+	for line in read_file(path)	:
+		if line == None:
+			skip
+		
+		tag = re.search(tag_regex, line)
+
+		if tag and changelog_started:
+			break
+		elif tag:
+			changelog_started = True
+			latest_tag = tag[0][1:-1] if latest_tag == None else latest_tag
+		elif changelog_started:
+			changelog += line
+
+	return latest_tag, changelog
