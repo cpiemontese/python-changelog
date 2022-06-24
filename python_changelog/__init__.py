@@ -1,7 +1,7 @@
 __version__ = '0.1.0'
 
-from python_changelog.changelog import read_changelog
+from python_changelog.changelog import find_latest_tag
 
 
 def main():
-	read_changelog()
+	print(f"Latest tag is: {find_latest_tag()}")
