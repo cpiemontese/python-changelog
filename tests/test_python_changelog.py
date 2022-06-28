@@ -13,4 +13,7 @@ def test_changelog_extraction():
     assert c.get_changelog_of_latest_tag(get_file_path("changelog_with_h1.md")) == ('0.1.0', 'First release 🚀\n\n# Added\n- Mario\n- Luigi\n- Simone ###')
 
 def get_file_path(filename):
-    return Path("tests/fixtures/"+filename)
+    path = Path("tests/fixtures/"+filename)
+    print(path)
+    return path
+

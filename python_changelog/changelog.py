@@ -42,4 +42,4 @@ def get_changelog_of_latest_tag(path):
 	return latest_tag, changelog.strip('\n')
 
 def replace_h3_with_h1(line):
-    re.sub('^###', '#', line)
+    return re.sub('^###', '#', line)
